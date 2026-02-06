@@ -1,0 +1,9 @@
+{
+  "name": "ncp-api-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "dockerode": "^3.3.5"
+  }
+}
