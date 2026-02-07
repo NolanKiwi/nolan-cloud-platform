@@ -1,7 +1,12 @@
-const express = require("express");
-const app = express();
-const port = 3000;
+const app = require('./src/app');
 
-app.get("/", (req, res) => res.send("NCP API Server Running"));
+const PORT = process.env.PORT || 3000;
 
-app.listen(port, () => console.log(`NCP Server listening on port ${port}`));
+app.listen(PORT, () => {
+  console.log(`
+   ☁️  Nolan Cloud Platform API Server
+   ===================================
+   🚀 Listening on port ${PORT}
+   🔗 Local: http://localhost:${PORT}
+  `);
+});
