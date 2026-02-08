@@ -39,6 +39,51 @@ class ContainerService {
       throw error;
     }
   }
+
+  /**
+   * Start a container
+   * @param {string} id - Container ID
+   * @returns {Promise<void>}
+   */
+  async startContainer(id) {
+    try {
+      const container = docker.getContainer(id);
+      await container.start();
+    } catch (error) {
+      console.error(`Error starting container ${id}:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Stop a container
+   * @param {string} id - Container ID
+   * @returns {Promise<void>}
+   */
+  async stopContainer(id) {
+    try {
+      const container = docker.getContainer(id);
+      await container.stop();
+    } catch (error) {
+      console.error(`Error stopping container ${id}:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Restart a container
+   * @param {string} id - Container ID
+   * @returns {Promise<void>}
+   */
+  async restartContainer(id) {
+    try {
+      const container = docker.getContainer(id);
+      await container.restart();
+    } catch (error) {
+      console.error(`Error restarting container ${id}:`, error);
+      throw error;
+    }
+  }
 }
 
 module.exports = new ContainerService();

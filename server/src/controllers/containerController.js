@@ -35,6 +35,36 @@ class ContainerController {
       });
     }
   }
+
+  async startContainer(req, res) {
+    try {
+      const { id } = req.params;
+      await containerService.startContainer(id);
+      res.json({ success: true, message: `Container ${id} started` });
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async stopContainer(req, res) {
+    try {
+      const { id } = req.params;
+      await containerService.stopContainer(id);
+      res.json({ success: true, message: `Container ${id} stopped` });
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async restartContainer(req, res) {
+    try {
+      const { id } = req.params;
+      await containerService.restartContainer(id);
+      res.json({ success: true, message: `Container ${id} restarted` });
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
 }
 
 module.exports = new ContainerController();
