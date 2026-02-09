@@ -1,4 +1,0 @@
-const imageService = require('./services/imageService');
-const imageController = require('./controllers/imageController'); // Wait, I didn't create a controller yet.
-
-// I'll check app.js to see how routes are registered.
