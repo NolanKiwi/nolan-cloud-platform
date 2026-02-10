@@ -13,7 +13,7 @@ Each day at 11:00 AM, the agent will check this file, pick the task for the curr
     - List local images (`docker images`)
     - Pull image from registry (`docker pull`)
     - Delete image (`docker rmi`)
-- [ ] **Day 5 (2/10)**: Volume Management API
+- [x] **Day 5 (2/10)**: Volume Management API
     - Create/List/Remove Docker volumes (preparation for Storage service).
 - [ ] **Day 6 (2/11)**: Network Management API
     - Create/List/Remove Docker networks.
