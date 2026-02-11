@@ -15,7 +15,7 @@ Each day at 11:00 AM, the agent will check this file, pick the task for the curr
     - Delete image (`docker rmi`)
 - [x] **Day 5 (2/10)**: Volume Management API
     - Create/List/Remove Docker volumes (preparation for Storage service).
-- [ ] **Day 6 (2/11)**: Network Management API
+- [x] **Day 6 (2/11)**: Network Management API
     - Create/List/Remove Docker networks.
     - Port mapping logic refinement.
 - [ ] **Day 7 (2/12)**: API Documentation & Refactoring
