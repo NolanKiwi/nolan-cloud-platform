@@ -18,10 +18,10 @@ Each day at 11:00 AM, the agent will check this file, pick the task for the curr
 - [x] **Day 6 (2/11)**: Network Management API
     - Create/List/Remove Docker networks.
     - Port mapping logic refinement.
-- [ ] **Day 7 (2/12)**: API Documentation & Refactoring
+- [x] **Day 7 (2/12)**: API Documentation & Refactoring
     - Setup Swagger/OpenAPI (`swagger-ui-express`).
     - Document existing APIs.
-    - Code cleanup.
+    - Code cleanup (Added missing Create/Remove Container APIs).
 
 ## 🚧 Week 2: Persistence & Identity (Database)
 *Goal: Introduce PostgreSQL to manage users and persistent resource state.*

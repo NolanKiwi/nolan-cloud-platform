@@ -1,0 +1,231 @@
+openapi: 3.0.0
+info:
+  title: Nolan Cloud Platform (NCP) API
+  description: API for managing Docker containers, images, volumes, and networks.
+  version: 1.0.0
+  contact:
+    name: NolanKiwi
+    url: https://github.com/NolanKiwi/nolan-cloud-platform
+
+servers:
+  - url: http://localhost:3000/api
+    description: Local Development Server
+
+tags:
+  - name: Containers
+    description: Manage Docker Containers
+  - name: Images
+    description: Manage Docker Images
+  - name: Volumes
+    description: Manage Docker Volumes
+  - name: Networks
+    description: Manage Docker Networks
+
+paths:
+  # Containers
+  /containers:
+    get:
+      summary: List all containers
+      tags: [Containers]
+      parameters:
+        - in: query
+          name: all
+          schema:
+            type: boolean
+          description: Show all containers (including stopped)
+      responses:
+        '200':
+          description: List of containers
+    post:
+      summary: Create a new container
+      tags: [Containers]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Image: { type: string, example: "nginx:latest" }
+                Cmd: { type: array, items: { type: string }, example: ["nginx", "-g", "daemon off;"] }
+      responses:
+        '201':
+          description: Container created
+
+  /containers/{id}:
+    get:
+      summary: Inspect a container
+      tags: [Containers]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Container details
+    delete:
+      summary: Remove a container
+      tags: [Containers]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+        - in: query
+          name: force
+          schema: { type: boolean }
+      responses:
+        '204':
+          description: Container removed
+
+  /containers/{id}/start:
+    post:
+      summary: Start a container
+      tags: [Containers]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '204':
+          description: Container started
+
+  /containers/{id}/stop:
+    post:
+      summary: Stop a container
+      tags: [Containers]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '204':
+          description: Container stopped
+
+  /containers/{id}/restart:
+    post:
+      summary: Restart a container
+      tags: [Containers]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '204':
+          description: Container restarted
+
+  # Images
+  /images:
+    get:
+      summary: List images
+      tags: [Images]
+      responses:
+        '200':
+          description: List of images
+
+  /images/pull:
+    post:
+      summary: Pull an image
+      tags: [Images]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fromImage: { type: string, example: "alpine" }
+                tag: { type: string, example: "latest" }
+      responses:
+        '200':
+          description: Image pull initiated (stream or result)
+
+  /images/{id}:
+    delete:
+      summary: Remove an image
+      tags: [Images]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Image removed
+
+  # Volumes
+  /volumes:
+    get:
+      summary: List volumes
+      tags: [Volumes]
+      responses:
+        '200':
+          description: List of volumes
+    post:
+      summary: Create a volume
+      tags: [Volumes]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Name: { type: string, example: "my-volume" }
+      responses:
+        '201':
+          description: Volume created
+
+  /volumes/{name}:
+    delete:
+      summary: Remove a volume
+      tags: [Volumes]
+      parameters:
+        - in: path
+          name: name
+          required: true
+          schema: { type: string }
+      responses:
+        '204':
+          description: Volume removed
+
+  # Networks
+  /networks:
+    get:
+      summary: List networks
+      tags: [Networks]
+      responses:
+        '200':
+          description: List of networks
+    post:
+      summary: Create a network
+      tags: [Networks]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Name: { type: string, example: "my-net" }
+                Driver: { type: string, example: "bridge" }
+      responses:
+        '201':
+          description: Network created
+
+  /networks/{id}:
+    delete:
+      summary: Remove a network
+      tags: [Networks]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '204':
+          description: Network removed

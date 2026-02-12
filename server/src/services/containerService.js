@@ -84,6 +84,48 @@ class ContainerService {
       throw error;
     }
   }
+
+  /**
+   * Create a new container
+   * @param {string} image - Image name (e.g., 'nginx:latest')
+   * @param {string[]} cmd - Command to run
+   * @param {string} name - Optional container name
+   * @returns {Promise<Object>} Created container info
+   */
+  async createContainer(image, cmd, name) {
+    try {
+      const opts = {
+        Image: image,
+        Cmd: cmd,
+        name: name
+      };
+      // Ensure image exists locally or pull it?
+      // For now, assume it exists or dockerode handles pull if missing (it doesn't by default).
+      // Dockerode createContainer needs image to be present usually.
+      
+      const container = await docker.createContainer(opts);
+      return container;
+    } catch (error) {
+      console.error('Error creating container:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Remove a container
+   * @param {string} id - Container ID
+   * @param {boolean} force - Force removal
+   * @returns {Promise<void>}
+   */
+  async removeContainer(id, force = false) {
+    try {
+      const container = docker.getContainer(id);
+      await container.remove({ force });
+    } catch (error) {
+      console.error(`Error removing container ${id}:`, error);
+      throw error;
+    }
+  }
 }
 
 module.exports = new ContainerService();

@@ -65,6 +65,27 @@ class ContainerController {
       res.status(500).json({ success: false, error: error.message });
     }
   }
+
+  async createContainer(req, res) {
+    try {
+      const { Image, Cmd, name } = req.body;
+      const container = await containerService.createContainer(Image, Cmd, name);
+      res.status(201).json({ success: true, data: container });
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async removeContainer(req, res) {
+    try {
+      const { id } = req.params;
+      const force = req.query.force === 'true';
+      await containerService.removeContainer(id, force);
+      res.status(204).send();
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
 }
 
 module.exports = new ContainerController();
