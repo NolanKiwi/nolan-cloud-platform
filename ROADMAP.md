@@ -26,7 +26,7 @@ Each day at 11:00 AM, the agent will check this file, pick the task for the curr
 ## 🚧 Week 2: Persistence & Identity (Database)
 *Goal: Introduce PostgreSQL to manage users and persistent resource state.*
 
-- [ ] **Day 8 (2/13)**: Database Setup
+- [x] **Day 8 (2/13)**: Database Setup
     - Add `postgres` service to `docker-compose.yml`.
     - Initialize Prisma ORM.
 - [ ] **Day 9 (2/14)**: User Authentication (Part 1)
