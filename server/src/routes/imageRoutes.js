@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const imageService = require('../services/imageService');
+const auth = require('../middlewares/authMiddleware');
 
 /**
  * GET /api/images
  * List all local images
  */
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
   try {
     const images = await imageService.listImages();
     res.json(images);
@@ -19,7 +20,7 @@ router.get('/', async (req, res) => {
  * POST /api/images/pull
  * Pull an image from registry
  */
-router.post('/pull', async (req, res) => {
+router.post('/pull', auth, async (req, res) => {
   const { image } = req.body;
   if (!image) {
     return res.status(400).json({ error: 'Image name is required' });
@@ -37,7 +38,7 @@ router.post('/pull', async (req, res) => {
  * DELETE /api/images/:id
  * Delete an image
  */
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
   const { id } = req.params;
   try {
     await imageService.deleteImage(id);

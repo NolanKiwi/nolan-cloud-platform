@@ -29,16 +29,16 @@ Each day at 11:00 AM, the agent will check this file, pick the task for the curr
 - [x] **Day 8 (2/13)**: Database Setup
     - Add `postgres` service to `docker-compose.yml`.
     - Initialize Prisma ORM.
-- [ ] **Day 9 (2/14)**: User Authentication (Part 1)
+- [x] **Day 9 (2/14)**: User Authentication (Part 1)
     - Define `User` schema.
     - Implement Signup/Login API (JWT based).
-- [ ] **Day 10 (2/15)**: User Authentication (Part 2)
+- [x] **Day 10 (2/15)**: User Authentication (Part 2)
     - Auth Middleware (JWT Verify).
     - Protect existing Container APIs (require login).
-- [ ] **Day 11 (2/16)**: Resource Ownership
+- [x] **Day 11 (2/16)**: Resource Ownership
     - Define `Instance` schema (sync with Docker containers).
     - Link containers to specific users (Ownership).
-- [ ] **Day 12 (2/17)**: API Key System
+- [x] **Day 12 (2/17)**: API Key System
     - Implement API Key generation for CLI usage.
     - Middleware to support both Bearer Token and x-api-key.
 - [ ] **Day 13 (2/18)**: Request Validation & Error Handling

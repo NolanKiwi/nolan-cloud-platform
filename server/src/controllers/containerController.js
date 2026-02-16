@@ -3,8 +3,9 @@ const containerService = require('../services/containerService');
 class ContainerController {
   async getContainers(req, res) {
     try {
+      const userId = req.user.id; // Auth Middleware
       const all = req.query.all === 'true';
-      const containers = await containerService.listContainers(all);
+      const containers = await containerService.listContainers(userId, all);
       res.json({
         success: true,
         count: containers.length,
@@ -21,8 +22,9 @@ class ContainerController {
 
   async getContainerStats(req, res) {
     try {
+      const userId = req.user.id;
       const { id } = req.params;
-      const stats = await containerService.getContainerStats(id);
+      const stats = await containerService.getContainerStats(userId, id);
       res.json({
         success: true,
         data: stats
@@ -38,8 +40,9 @@ class ContainerController {
 
   async startContainer(req, res) {
     try {
+      const userId = req.user.id;
       const { id } = req.params;
-      await containerService.startContainer(id);
+      await containerService.startContainer(userId, id);
       res.json({ success: true, message: `Container ${id} started` });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
@@ -48,8 +51,9 @@ class ContainerController {
 
   async stopContainer(req, res) {
     try {
+      const userId = req.user.id;
       const { id } = req.params;
-      await containerService.stopContainer(id);
+      await containerService.stopContainer(userId, id);
       res.json({ success: true, message: `Container ${id} stopped` });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
@@ -58,8 +62,9 @@ class ContainerController {
 
   async restartContainer(req, res) {
     try {
+      const userId = req.user.id;
       const { id } = req.params;
-      await containerService.restartContainer(id);
+      await containerService.restartContainer(userId, id);
       res.json({ success: true, message: `Container ${id} restarted` });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
@@ -68,8 +73,14 @@ class ContainerController {
 
   async createContainer(req, res) {
     try {
-      const { Image, Cmd, name } = req.body;
-      const container = await containerService.createContainer(Image, Cmd, name);
+      const userId = req.user.id;
+      const { image, cmd, name } = req.body; // Changed 'Image', 'Cmd' -> 'image', 'cmd' (consistent naming)
+      
+      if (!image) {
+        return res.status(400).json({ success: false, error: 'Image is required' });
+      }
+
+      const container = await containerService.createContainer(userId, image, name, cmd);
       res.status(201).json({ success: true, data: container });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
@@ -78,9 +89,10 @@ class ContainerController {
 
   async removeContainer(req, res) {
     try {
+      const userId = req.user.id;
       const { id } = req.params;
       const force = req.query.force === 'true';
-      await containerService.removeContainer(id, force);
+      await containerService.removeContainer(userId, id, force);
       res.status(204).send();
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });

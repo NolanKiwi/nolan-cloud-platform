@@ -1,26 +1,27 @@
 const express = require('express');
 const router = express.Router();
 const containerController = require('../controllers/containerController');
+const auth = require('../middlewares/authMiddleware');
 
-// GET /api/containers
-router.get('/', containerController.getContainers);
+// GET /api/containers (Protect all routes)
+router.get('/', auth, containerController.getContainers);
 
 // POST /api/containers
-router.post('/', containerController.createContainer);
+router.post('/', auth, containerController.createContainer);
 
 // GET /api/containers/:id/stats
-router.get('/:id/stats', containerController.getContainerStats);
+router.get('/:id/stats', auth, containerController.getContainerStats);
 
 // DELETE /api/containers/:id
-router.delete('/:id', containerController.removeContainer);
+router.delete('/:id', auth, containerController.removeContainer);
 
 // POST /api/containers/:id/start
-router.post('/:id/start', containerController.startContainer);
+router.post('/:id/start', auth, containerController.startContainer);
 
 // POST /api/containers/:id/stop
-router.post('/:id/stop', containerController.stopContainer);
+router.post('/:id/stop', auth, containerController.stopContainer);
 
 // POST /api/containers/:id/restart
-router.post('/:id/restart', containerController.restartContainer);
+router.post('/:id/restart', auth, containerController.restartContainer);
 
 module.exports = router;
