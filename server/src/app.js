@@ -8,6 +8,7 @@ const imageRoutes = require('./routes/imageRoutes');
 const volumeRoutes = require('./routes/volumeRoutes');
 const networkRoutes = require('./routes/networkRoutes');
 const authRoutes = require('./routes/authRoutes');
+const errorHandler = require('./middlewares/errorHandler'); // Global Error Handler
 
 const app = express();
 
@@ -35,5 +36,8 @@ app.get('/', (req, res) => {
     docs: '/api-docs'
   });
 });
+
+// Global Error Handler
+app.use(errorHandler);
 
 module.exports = app;

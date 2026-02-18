@@ -41,7 +41,7 @@ Each day at 11:00 AM, the agent will check this file, pick the task for the curr
 - [x] **Day 12 (2/17)**: API Key System
     - Implement API Key generation for CLI usage.
     - Middleware to support both Bearer Token and x-api-key.
-- [ ] **Day 13 (2/18)**: Request Validation & Error Handling
+- [x] **Day 13 (2/18)**: Request Validation & Error Handling
     - Add `joi` or `zod` for input validation.
     - Global Error Handler middleware.
 - [ ] **Day 14 (2/19)**: Unit Testing

@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 const containerController = require('../controllers/containerController');
 const auth = require('../middlewares/authMiddleware');
+const { validate, schemas } = require('../middlewares/validationMiddleware');
 
 // GET /api/containers (Protect all routes)
 router.get('/', auth, containerController.getContainers);
 
 // POST /api/containers
-router.post('/', auth, containerController.createContainer);
+router.post('/', auth, validate(schemas.containerCreate), containerController.createContainer);
 
 // GET /api/containers/:id/stats
 router.get('/:id/stats', auth, containerController.getContainerStats);
