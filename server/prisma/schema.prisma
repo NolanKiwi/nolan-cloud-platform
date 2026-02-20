@@ -7,7 +7,6 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -19,6 +18,7 @@ model User {
   updatedAt DateTime @updatedAt
   instances Instance[]
   apiKeys   ApiKey[]
+  buckets   Bucket[]
 }
 
 model Instance {
@@ -41,4 +41,28 @@ model ApiKey {
   user       User      @relation(fields: [userId], references: [id])
   createdAt  DateTime  @default(now())
   lastUsedAt DateTime?
+}
+
+model Bucket {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  objects   Object[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Object {
+  id        Int      @id @default(autoincrement())
+  key       String
+  size      Int
+  mimeType  String
+  path      String
+  bucketId  Int
+  bucket    Bucket   @relation(fields: [bucketId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([bucketId, key])
 }

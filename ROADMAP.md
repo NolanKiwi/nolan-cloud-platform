@@ -51,7 +51,7 @@ Each day at 11:00 AM, the agent will check this file, pick the task for the curr
 ## 📦 Week 3: Storage Service (N-S3)
 *Goal: Build a simplified object storage service compatible with basic S3 operations.*
 
-- [ ] **Day 15 (2/20)**: Storage Service Foundation
+- [x] **Day 15 (2/20)**: Storage Service Foundation
     - Define `Bucket` and `Object` schemas in DB.
     - Create file system structure for storage (`./storage_data`).
 - [ ] **Day 16 (2/21)**: Bucket Operations
