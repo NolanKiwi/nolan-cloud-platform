@@ -8,6 +8,7 @@ const imageRoutes = require('./routes/imageRoutes');
 const volumeRoutes = require('./routes/volumeRoutes');
 const networkRoutes = require('./routes/networkRoutes');
 const authRoutes = require('./routes/authRoutes');
+const storageRoutes = require('./routes/storageRoutes');
 const errorHandler = require('./middlewares/errorHandler'); // Global Error Handler
 
 const app = express();
@@ -27,6 +28,7 @@ app.use('/api/images', imageRoutes);
 app.use('/api/volumes', volumeRoutes);
 app.use('/api/networks', networkRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/storage', storageRoutes);
 
 // Health Check
 app.get('/', (req, res) => {

@@ -55,6 +55,16 @@ const networkCreateSchema = Joi.object({
     driver: Joi.string().default('bridge')
 });
 
+// 6. Storage Schemas
+const bucketCreateSchema = Joi.object({
+    name: Joi.string().alphanum().min(3).max(63).required().messages({
+        'string.alphanum': 'Bucket name must be alphanumeric',
+        'string.min': 'Bucket name must be at least 3 characters',
+        'string.max': 'Bucket name must be at most 63 characters',
+        'any.required': 'Bucket name is required'
+    })
+});
+
 module.exports = {
     validate,
     schemas: {
@@ -63,6 +73,7 @@ module.exports = {
         containerCreate: containerCreateSchema,
         imagePull: imagePullSchema,
         volumeCreate: volumeCreateSchema,
-        networkCreate: networkCreateSchema
+        networkCreate: networkCreateSchema,
+        bucketCreate: bucketCreateSchema
     }
 };

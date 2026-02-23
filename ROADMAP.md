@@ -54,10 +54,10 @@ Each day at 11:00 AM, the agent will check this file, pick the task for the curr
 - [x] **Day 15 (2/20)**: Storage Service Foundation
     - Define `Bucket` and `Object` schemas in DB.
     - Create file system structure for storage (`./storage_data`).
-- [ ] **Day 16 (2/21)**: Bucket Operations
+- [x] **Day 16 (2/21)**: Bucket Operations
     - Create/List/Delete Buckets API.
     - Enforce bucket naming uniqueness.
-- [ ] **Day 17 (2/22)**: File Upload (PutObject)
+- [x] **Day 17 (2/22)**: File Upload (PutObject)
     - Implement `multer` for file uploads.
     - Save files to disk and metadata to DB.
 - [ ] **Day 18 (2/23)**: File Download (GetObject)
