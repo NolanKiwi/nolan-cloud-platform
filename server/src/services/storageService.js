@@ -111,6 +111,36 @@ class StorageService {
 
     return object;
   }
+  async getObject(userId, bucketName, objectKey) {
+    // 1. Verify bucket and object existence
+    const bucket = await prisma.bucket.findUnique({
+      where: { name: bucketName }
+    });
+
+    if (!bucket) {
+      throw new Error('Bucket not found');
+    }
+
+    if (bucket.userId !== userId) {
+      throw new Error('Permission denied');
+    }
+
+    const object = await prisma.object.findUnique({
+      where: {
+        bucketId_key: {
+          bucketId: bucket.id,
+          key: objectKey
+        }
+      }
+    });
+
+    if (!object) {
+      throw new Error('Object not found');
+    }
+
+    // 2. Return object metadata and physical path
+    return object;
+  }
 }
 
 module.exports = new StorageService();

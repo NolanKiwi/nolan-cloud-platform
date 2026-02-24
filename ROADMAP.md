@@ -60,7 +60,7 @@ Each day at 11:00 AM, the agent will check this file, pick the task for the curr
 - [x] **Day 17 (2/22)**: File Upload (PutObject)
     - Implement `multer` for file uploads.
     - Save files to disk and metadata to DB.
-- [ ] **Day 18 (2/23)**: File Download (GetObject)
+- [x] **Day 18 (2/23)**: File Download (GetObject)
     - Stream files back to client.
     - Handle MIME types.
 - [ ] **Day 19 (2/24)**: File Permissions (ACL)

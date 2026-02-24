@@ -1,4 +1,5 @@
 const storageService = require('../services/storageService');
+const path = require('path');
 
 class StorageController {
   async listBuckets(req, res, next) {
@@ -48,6 +49,22 @@ class StorageController {
 
       const object = await storageService.putObject(userId, bucketName, file);
       res.status(201).json(object);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async downloadObject(req, res, next) {
+    try {
+      const userId = req.user.userId;
+      const { bucketName, objectKey } = req.params;
+
+      const object = await storageService.getObject(userId, bucketName, objectKey);
+      
+      res.setHeader('Content-Type', object.mimeType);
+      res.setHeader('Content-Disposition', `attachment; filename="${object.key}"`);
+      
+      res.sendFile(path.resolve(object.path));
     } catch (error) {
       next(error);
     }

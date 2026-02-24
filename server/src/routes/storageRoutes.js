@@ -35,5 +35,6 @@ router.post('/buckets', validate(schemas.bucketCreate), storageController.create
 router.delete('/buckets/:id', storageController.deleteBucket);
 
 router.post('/buckets/:bucketName/objects', upload.single('file'), storageController.uploadObject);
+router.get('/buckets/:bucketName/objects/:objectKey', storageController.downloadObject);
 
 module.exports = router;
