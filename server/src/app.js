@@ -9,6 +9,7 @@ const volumeRoutes = require('./routes/volumeRoutes');
 const networkRoutes = require('./routes/networkRoutes');
 const authRoutes = require('./routes/authRoutes');
 const storageRoutes = require('./routes/storageRoutes');
+const notificationRoutes = require('./routes/notificationRoutes');
 const errorHandler = require('./middlewares/errorHandler'); // Global Error Handler
 const { initJobs } = require('./jobs/cronJobs'); // Background Jobs
 
@@ -33,6 +34,7 @@ app.use('/api/volumes', volumeRoutes);
 app.use('/api/networks', networkRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/storage', storageRoutes);
+app.use('/api/notifications', notificationRoutes);
 
 // Health Check
 app.get('/', (req, res) => {

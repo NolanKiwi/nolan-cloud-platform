@@ -3,6 +3,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const Docker = require('dockerode');
 const docker = new Docker({ socketPath: '/var/run/docker.sock' });
+const notificationService = require('../services/notificationService');
 
 // Task 1: Sync Docker State -> DB
 const syncDockerState = async () => {
@@ -28,6 +29,16 @@ const syncDockerState = async () => {
                         where: { id: instance.id },
                         data: { status: currentStatus }
                     });
+                    
+                    // Trigger Webhook Notification
+                    notificationService.sendWebhook({
+                        type: 'INSTANCE_STATE_CHANGE',
+                        resourceId: instance.containerId,
+                        resourceName: instance.name,
+                        userId: instance.userId,
+                        status: currentStatus,
+                        timestamp: new Date()
+                    });
                 }
             } catch (err) {
                 // If container not found (404), mark as terminated
@@ -38,6 +49,17 @@ const syncDockerState = async () => {
                         await prisma.instance.update({
                             where: { id: instance.id },
                             data: { status: 'terminated' }
+                        });
+                        
+                        // Trigger Webhook Notification
+                        notificationService.sendWebhook({
+                            type: 'INSTANCE_TERMINATED',
+                            resourceId: instance.containerId,
+                            resourceName: instance.name,
+                            userId: instance.userId,
+                            status: 'terminated',
+                            reason: 'container_missing',
+                            timestamp: new Date()
                         });
                     }
                 }

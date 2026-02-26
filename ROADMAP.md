@@ -69,7 +69,7 @@ Each day at 11:00 AM, the agent will check this file, pick the task for the curr
 - [x] **Day 20 (2/25)**: Resource Monitoring
     - Background job (cron) to sync actual Docker state with DB.
     - Calculate disk usage per user.
-- [ ] **Day 21 (2/26)**: Webhook System
+- [x] **Day 21 (2/26)**: Webhook System
     - Notify external URL when container state changes.
 
 ## 💻 Week 4: CLI & Dashboard (Client)
