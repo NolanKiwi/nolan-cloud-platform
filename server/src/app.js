@@ -10,8 +10,12 @@ const networkRoutes = require('./routes/networkRoutes');
 const authRoutes = require('./routes/authRoutes');
 const storageRoutes = require('./routes/storageRoutes');
 const errorHandler = require('./middlewares/errorHandler'); // Global Error Handler
+const { initJobs } = require('./jobs/cronJobs'); // Background Jobs
 
 const app = express();
+
+// Initialize Cron
+initJobs();
 
 // Load OpenAPI Spec
 const swaggerDocument = YAML.load(path.join(__dirname, '../docs/openapi.yaml'));
