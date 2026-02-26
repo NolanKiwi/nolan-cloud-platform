@@ -1,6 +1,6 @@
-const docker = require('../config/docker');
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+const Docker = require('dockerode');
+const docker = new Docker({ socketPath: '/var/run/docker.sock' });
+const prisma = require('../db');
 
 class ContainerService {
   /**

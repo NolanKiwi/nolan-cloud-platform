@@ -75,7 +75,7 @@ Each day at 11:00 AM, the agent will check this file, pick the task for the curr
 ## 💻 Week 4: CLI & Dashboard (Client)
 *Goal: Provide user interfaces to interact with the platform.*
 
-- [ ] **Day 22 (2/27)**: CLI Tool Init
+- [x] **Day 22 (2/27)**: CLI Tool Init
     - Create `ncp-cli` project (Node.js).
     - Implement `ncp config` (save API URL and Key).
 - [ ] **Day 23 (2/28)**: CLI Compute Commands

@@ -1,5 +1,4 @@
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+const prisma = require('../db');
 const fs = require('fs').promises;
 const path = require('path');
 const jwt = require('jsonwebtoken');

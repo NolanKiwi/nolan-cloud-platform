@@ -1,6 +1,5 @@
 const cron = require('node-cron');
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+const prisma = require('../db');
 const Docker = require('dockerode');
 const docker = new Docker({ socketPath: '/var/run/docker.sock' });
 const notificationService = require('../services/notificationService');
