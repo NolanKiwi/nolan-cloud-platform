@@ -63,7 +63,7 @@ Each day at 11:00 AM, the agent will check this file, pick the task for the curr
 - [x] **Day 18 (2/23)**: File Download (GetObject)
     - Stream files back to client.
     - Handle MIME types.
-- [ ] **Day 19 (2/24)**: File Permissions (ACL)
+- [x] **Day 19 (2/24)**: File Permissions (ACL)
     - Public/Private read access control.
     - Presigned URL generation (simulation).
 - [ ] **Day 20 (2/25)**: Resource Monitoring

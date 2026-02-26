@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
 }
 
 model User {
@@ -46,6 +46,7 @@ model ApiKey {
 model Bucket {
   id        Int      @id @default(autoincrement())
   name      String   @unique
+  isPublic  Boolean  @default(false)
   userId    Int
   user      User     @relation(fields: [userId], references: [id])
   objects   Object[]
@@ -59,6 +60,7 @@ model Object {
   size      Int
   mimeType  String
   path      String
+  isPublic  Boolean  @default(false)
   bucketId  Int
   bucket    Bucket   @relation(fields: [bucketId], references: [id])
   createdAt DateTime @default(now())

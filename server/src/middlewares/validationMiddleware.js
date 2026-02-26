@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 // Helper middleware to validate request body
 const validate = (schema) => (req, res, next) => {
-    const { error } = schema.validate(req.body, { abortEarly: false });
+    const { error, value } = schema.validate(req.body, { abortEarly: false });
     
     if (error) {
         // Collect all error messages
@@ -14,6 +14,7 @@ const validate = (schema) => (req, res, next) => {
         return next(err);
     }
     
+    req.body = value; // Use validated value (applies defaults and coercion)
     next();
 };
 
@@ -62,7 +63,8 @@ const bucketCreateSchema = Joi.object({
         'string.min': 'Bucket name must be at least 3 characters',
         'string.max': 'Bucket name must be at most 63 characters',
         'any.required': 'Bucket name is required'
-    })
+    }),
+    isPublic: Joi.boolean().optional().default(false)
 });
 
 module.exports = {

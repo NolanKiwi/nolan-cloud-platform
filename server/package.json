@@ -1,7 +1,11 @@
 {
   "name": "ncp-api-server",
   "version": "1.0.0",
-  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest"
+  },
   "dependencies": {
     "@prisma/client": "^7.4.0",
     "bcryptjs": "^3.0.3",
