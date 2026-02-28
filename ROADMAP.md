@@ -78,7 +78,7 @@ Each day at 11:00 AM, the agent will check this file, pick the task for the curr
 - [x] **Day 22 (2/27)**: CLI Tool Init
     - Create `ncp-cli` project (Node.js).
     - Implement `ncp config` (save API URL and Key).
-- [ ] **Day 23 (2/28)**: CLI Compute Commands
+- [x] **Day 23 (2/28)**: CLI Compute Commands
     - `ncp run <image>`, `ncp ps`, `ncp stop <id>`.
 - [ ] **Day 24 (3/1)**: CLI Storage Commands
     - `ncp s3 mb` (make bucket), `ncp s3 cp` (upload).
