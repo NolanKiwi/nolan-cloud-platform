@@ -80,12 +80,12 @@ Each day at 11:00 AM, the agent will check this file, pick the task for the curr
     - Implement `ncp config` (save API URL and Key).
 - [x] **Day 23 (2/28)**: CLI Compute Commands
     - `ncp run <image>`, `ncp ps`, `ncp stop <id>`.
-- [ ] **Day 24 (3/1)**: CLI Storage Commands
+- [x] **Day 24 (3/1)**: CLI Storage Commands
     - `ncp s3 mb` (make bucket), `ncp s3 cp` (upload).
 - [ ] **Day 25 (3/2)**: Simple Dashboard (Part 1)
     - Setup simple HTML/JS frontend (or React).
     - Login page & Dashboard overview.
-- [ ] **Day 26 (3/3)**: Simple Dashboard (Part 2)
+- [x] **Day 26 (3/3)**: Simple Dashboard (Part 2)
     - Instance list & control UI.
     - File browser UI.
 - [ ] **Day 27 (3/4)**: Final Polish

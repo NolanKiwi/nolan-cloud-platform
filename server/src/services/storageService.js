@@ -9,7 +9,8 @@ const JWT_SECRET = process.env.JWT_SECRET || 'nolan-secret-key-123';
 class StorageService {
   async listBuckets(userId) {
     return await prisma.bucket.findMany({
-      where: { userId }
+      where: { userId },
+      include: { objects: true }
     });
   }
 

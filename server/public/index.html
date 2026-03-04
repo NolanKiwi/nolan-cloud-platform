@@ -26,14 +26,34 @@
   </nav>
 
   <div class="container mx-auto px-4 mt-8">
-    <div class="bg-white shadow rounded-lg p-6">
-      <h2 class="text-xl font-bold mb-4">Welcome to Nolan Cloud Platform!</h2>
-      <p class="text-gray-700 mb-4">You have successfully logged in.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       
-      <div class="mt-8">
-        <h3 class="text-lg font-semibold mb-2">API Status:</h3>
-        <div id="api-status" class="bg-gray-100 p-4 rounded border text-sm font-mono">Loading...</div>
+      <!-- Instances Section -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-bold">Instances (Containers)</h2>
+          <button id="refresh-instances" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm">Refresh</button>
+        </div>
+        <div id="instances-list" class="space-y-4">
+          <div class="text-gray-500 text-sm">Loading instances...</div>
+        </div>
       </div>
+
+      <!-- Storage Section -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-bold">Storage Buckets</h2>
+          <button id="refresh-buckets" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm">Refresh</button>
+        </div>
+        <div class="mb-4 flex gap-2">
+          <input type="text" id="new-bucket-name" placeholder="Bucket Name" class="border rounded px-2 py-1 flex-1 text-sm">
+          <button id="create-bucket-btn" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm">Create</button>
+        </div>
+        <div id="buckets-list" class="space-y-4">
+          <div class="text-gray-500 text-sm">Loading buckets...</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
