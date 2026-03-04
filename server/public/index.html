@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Nolan Cloud Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+  <nav class="bg-blue-800 p-4 shadow mt-0 w-full">
+    <div class="container mx-auto flex flex-wrap items-center">
+      <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+        <a class="text-white no-underline hover:text-white hover:no-underline" href="#">
+          <span class="text-2xl pl-2">NCP Dashboard</span>
+        </a>
+      </div>
+      <div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+        <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
+          <li class="mr-3">
+            <button id="logout-btn" class="inline-block text-gray-300 no-underline hover:text-white hover:text-underline py-2 px-4">Logout</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mx-auto px-4 mt-8">
+    <div class="bg-white shadow rounded-lg p-6">
+      <h2 class="text-xl font-bold mb-4">Welcome to Nolan Cloud Platform!</h2>
+      <p class="text-gray-700 mb-4">You have successfully logged in.</p>
+      
+      <div class="mt-8">
+        <h3 class="text-lg font-semibold mb-2">API Status:</h3>
+        <div id="api-status" class="bg-gray-100 p-4 rounded border text-sm font-mono">Loading...</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

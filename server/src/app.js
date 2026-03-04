@@ -24,6 +24,9 @@ const swaggerDocument = YAML.load(path.join(__dirname, '../docs/openapi.yaml'));
 // Middleware
 app.use(express.json());
 
+// Serve Static Files
+app.use(express.static(path.join(__dirname, '../public')));
+
 // API Documentation
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
