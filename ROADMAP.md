@@ -88,7 +88,7 @@ Each day at 11:00 AM, the agent will check this file, pick the task for the curr
 - [x] **Day 26 (3/3)**: Simple Dashboard (Part 2)
     - Instance list & control UI.
     - File browser UI.
-- [ ] **Day 27 (3/4)**: Final Polish
+- [x] **Day 27 (3/4)**: Final Polish
     - Update `README.md` with full usage guide.
     - Create setup script (`install.sh`).
 - [ ] **Day 28 (3/5)**: Release v1.0
